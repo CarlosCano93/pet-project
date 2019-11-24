@@ -15,18 +15,5 @@ public class Collector {
         return "Hello Pet";
     }
 
-    @GetMapping("/ex")
-    public String throwException() {
-        try {
-            unsafeMethod();
-        } catch (Exception e) {
-            Sentry.capture(e);
-        }
 
-        return "";
-    }
-
-    private void unsafeMethod() {
-        throw new UnsupportedOperationException("You shouldn't call this!");
-    }
 }
