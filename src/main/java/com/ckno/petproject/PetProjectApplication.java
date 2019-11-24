@@ -11,10 +11,4 @@ public class PetProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PetProjectApplication.class, args);
 	}
-
-	@Bean
-	public HandlerExceptionResolver sentryExceptionResolver() {
-		return new io.sentry.spring.SentryExceptionResolver();
-	}
-
 }

@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1")
-public class Collector {
+public class Controller {
 
     @GetMapping("/")
     public String sayHey() {
         Sentry.capture("Hello Sentry!");
         return "Hello Pet";
     }
-
 
 }
