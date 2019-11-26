@@ -1,4 +1,4 @@
-package com.ckno.petproject.domain;
+package com.ckno.petproject.infrastructure;
 
 import com.ckno.petproject.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +8,6 @@ import java.io.Serializable;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Serializable> {
+public interface LoginRepository extends JpaRepository<User, Serializable> {
     Optional<User> findByNameAndPassword(String name, String password);
 }

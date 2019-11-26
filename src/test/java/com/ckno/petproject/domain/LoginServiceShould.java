@@ -2,6 +2,7 @@ package com.ckno.petproject.domain;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.entity.User;
+import com.ckno.petproject.infrastructure.LoginRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceShould {
+public class LoginServiceShould {
 
     private static final String PASSWORD = "carlos01";
     private static final String NAME = "Carlos";
@@ -29,23 +30,23 @@ public class UserServiceShould {
             .build();
 
     @Mock
-    private UserRepository userRepository;
+    private LoginRepository loginRepository;
 
     @InjectMocks
-    private UserService userService;
+    private LoginService loginService;
 
     @Test
     void call_login_and_throw_exception_if_doest_find_user() {
         assertThrows(NoSuchElementException.class,
-                () -> userService.login(UserDto.builder().build()));
+                () -> loginService.login(UserDto.builder().build()));
     }
 
     @Test
     void call_login_and_return_user() {
-        given(userRepository.findByNameAndPassword(USER_DTO.getName(), USER_DTO.getPassword()))
+        given(loginRepository.findByNameAndPassword(USER_DTO.getName(), USER_DTO.getPassword()))
                 .willReturn(Optional.of(USER));
 
-        assertThat(userService.login(USER_DTO))
+        assertThat(loginService.login(USER_DTO))
                 .isEqualTo(USER);
     }
 }
