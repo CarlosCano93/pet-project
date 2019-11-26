@@ -2,7 +2,6 @@ package com.ckno.petproject.domain;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.entity.User;
-import com.ckno.petproject.infrastructure.LoginRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,7 +29,7 @@ public class LoginServiceShould {
             .build();
 
     @Mock
-    private LoginRepository loginRepository;
+    private LoginClientPort loginClient;
 
     @InjectMocks
     private LoginService loginService;
@@ -43,7 +42,7 @@ public class LoginServiceShould {
 
     @Test
     void call_login_and_return_user() {
-        given(loginRepository.findByNameAndPassword(USER_DTO.getName(), USER_DTO.getPassword()))
+        given(loginClient.login(USER_DTO.getName(), USER_DTO.getPassword()))
                 .willReturn(Optional.of(USER));
 
         assertThat(loginService.login(USER_DTO))
