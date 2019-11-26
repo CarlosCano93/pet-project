@@ -1,7 +1,8 @@
 package com.ckno.petproject.application.dto;
 
 import com.ckno.petproject.domain.entity.User;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder
