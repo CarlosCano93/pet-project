@@ -2,6 +2,7 @@ package com.ckno.petproject.application;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.LoginService;
+import com.ckno.petproject.domain.SignUpService;
 import com.ckno.petproject.domain.entity.User;
 import io.sentry.Sentry;
 import org.springframework.http.HttpStatus;
@@ -15,9 +16,12 @@ import java.util.NoSuchElementException;
 @RequestMapping("/v1")
 public class Controller {
     private LoginService loginService;
+    private SignUpService signUpService;
 
-    public Controller(LoginService loginService) {
+    public Controller(LoginService loginService,
+                      SignUpService signUpService) {
         this.loginService = loginService;
+        this.signUpService = signUpService;
     }
 
     @GetMapping("/")
@@ -38,5 +42,8 @@ public class Controller {
         }
     }
 
-
+    @PostMapping("/signup")
+    public ResponseEntity<User> signUp(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok(signUpService.signUp(userDto));
+    }
 }

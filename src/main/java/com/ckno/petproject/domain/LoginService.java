@@ -5,14 +5,14 @@ import com.ckno.petproject.domain.entity.User;
 import com.ckno.petproject.domain.port.LoginClientPort;
 
 public class LoginService {
-    private LoginClientPort userClient;
+    private LoginClientPort loginClient;
 
-    public LoginService(LoginClientPort userClient) {
-        this.userClient = userClient;
+    public LoginService(LoginClientPort loginClient) {
+        this.loginClient = loginClient;
     }
 
     public User login(UserDto user) {
-        return userClient
+        return loginClient
                 .login(user.getName(), user.getPassword())
                 .orElseThrow();
     }

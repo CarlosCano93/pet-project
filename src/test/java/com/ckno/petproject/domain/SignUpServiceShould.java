@@ -9,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
@@ -33,7 +31,7 @@ public class SignUpServiceShould {
     private SignUpClientPort signUpClient;
 
     @InjectMocks
-    private SingUpService signUpService;
+    private SignUpService signUpService;
 
     @Test
     void call_sign_up_and_return_new_user() {

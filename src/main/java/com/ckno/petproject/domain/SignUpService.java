@@ -4,11 +4,11 @@ import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.entity.User;
 import com.ckno.petproject.domain.port.SignUpClientPort;
 
-public class SingUpService {
+public class SignUpService {
 
     private SignUpClientPort signUpClient;
 
-    public SingUpService(SignUpClientPort signUpClient) {
+    public SignUpService(SignUpClientPort signUpClient) {
         this.signUpClient = signUpClient;
     }
 
