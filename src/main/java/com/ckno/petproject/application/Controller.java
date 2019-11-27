@@ -33,6 +33,7 @@ public class Controller {
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody UserDto userDto) {
         try {
+            Sentry.capture("login: " + userDto.toString());
             return ResponseEntity.ok(loginService.login(userDto));
         } catch (NoSuchElementException ex) {
             throw new ResponseStatusException(
@@ -44,6 +45,7 @@ public class Controller {
 
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody UserDto userDto) {
+        Sentry.capture("signup" + userDto.toString());
         return ResponseEntity.ok(signUpService.signUp(userDto));
     }
 }
