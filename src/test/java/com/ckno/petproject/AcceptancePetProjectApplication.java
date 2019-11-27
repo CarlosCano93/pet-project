@@ -53,14 +53,14 @@ class AcceptancePetProjectApplication {
     }
 
     @Test
-    void login_return_unauthorized_if_is_not_in_db() throws Exception {
+    void login_return_not_found_if_is_not_in_db() throws Exception {
         String userJson = objectMapper.writeValueAsString(FAKE_USER);
 
         this.mockMvc.perform(
                 post("/v1/login/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userJson))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized());
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
     @Test

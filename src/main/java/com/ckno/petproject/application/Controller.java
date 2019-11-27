@@ -30,9 +30,11 @@ public class Controller {
     public ResponseEntity<User> login(@RequestBody UserDto userDto) {
         try {
             return ResponseEntity.ok(loginService.login(userDto));
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException ex) {
             throw new ResponseStatusException(
-                    HttpStatus.UNAUTHORIZED, "User unauthorized", e);
+                    HttpStatus.NOT_FOUND,
+                    "User " + userDto.getName() + " not found in DB",
+                    ex);
         }
     }
 
