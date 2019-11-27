@@ -1,4 +1,4 @@
-package com.ckno.petproject.domain;
+package com.ckno.petproject.domain.port;
 
 import com.ckno.petproject.domain.entity.User;
 

@@ -2,6 +2,7 @@ package com.ckno.petproject.domain;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.entity.User;
+import com.ckno.petproject.domain.port.LoginClientPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,15 +1,15 @@
 package com.ckno.petproject.infrastructure;
 
-import com.ckno.petproject.domain.LoginClientPort;
+import com.ckno.petproject.domain.port.LoginClientPort;
 import com.ckno.petproject.domain.entity.User;
 
 import java.util.Optional;
 
-public class LoginClientClient implements LoginClientPort {
+public class LoginClientAdapter implements LoginClientPort {
 
     private LoginRepository loginRepository;
 
-    public LoginClientClient(LoginRepository loginRepository) {
+    public LoginClientAdapter(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
