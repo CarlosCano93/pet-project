@@ -64,8 +64,8 @@ class AcceptancePetProjectApplication {
     }
 
     @Test
-    @Disabled
     void login_return_user() throws Exception {
+        userRepository.save(EXISTING_USER.toUser());
         String userJson = objectMapper.writeValueAsString(EXISTING_USER);
 
         this.mockMvc.perform(
