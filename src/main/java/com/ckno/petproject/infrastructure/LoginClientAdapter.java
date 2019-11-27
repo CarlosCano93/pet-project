@@ -7,14 +7,14 @@ import java.util.Optional;
 
 public class LoginClientAdapter implements LoginClientPort {
 
-    private LoginRepository loginRepository;
+    private UserRepository userRepository;
 
-    public LoginClientAdapter(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    public LoginClientAdapter(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public Optional<User> login(String username, String password) {
-        return loginRepository.findByNameAndPassword(username, password);
+        return userRepository.findByNameAndPassword(username, password);
     }
 }

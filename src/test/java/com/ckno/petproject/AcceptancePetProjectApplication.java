@@ -1,7 +1,7 @@
 package com.ckno.petproject;
 
 import com.ckno.petproject.application.dto.UserDto;
-import com.ckno.petproject.infrastructure.LoginRepository;
+import com.ckno.petproject.infrastructure.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ class AcceptancePetProjectApplication {
     private MockMvc mockMvc;
 
     @Autowired
-    private LoginRepository loginRepository;
+    private UserRepository userRepository;
 
     @Test
     void context_load() {

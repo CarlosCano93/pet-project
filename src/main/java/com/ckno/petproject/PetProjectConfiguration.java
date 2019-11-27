@@ -3,7 +3,7 @@ package com.ckno.petproject;
 import com.ckno.petproject.domain.port.LoginClientPort;
 import com.ckno.petproject.domain.LoginService;
 import com.ckno.petproject.infrastructure.LoginClientAdapter;
-import com.ckno.petproject.infrastructure.LoginRepository;
+import com.ckno.petproject.infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +19,8 @@ public class PetProjectConfiguration {
 
     @Bean
     @Autowired
-    public LoginClientPort userClient(LoginRepository loginRepository) {
-        return new LoginClientAdapter(loginRepository);
+    public LoginClientPort userClient(UserRepository userRepository) {
+        return new LoginClientAdapter(userRepository);
     }
 
     @Bean

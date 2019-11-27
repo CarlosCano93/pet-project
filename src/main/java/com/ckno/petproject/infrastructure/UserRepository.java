@@ -8,6 +8,6 @@ import java.io.Serializable;
 import java.util.Optional;
 
 @Repository
-public interface LoginRepository extends JpaRepository<User, Serializable> {
+public interface UserRepository extends JpaRepository<User, Serializable> {
     Optional<User> findByNameAndPassword(String name, String password);
 }
