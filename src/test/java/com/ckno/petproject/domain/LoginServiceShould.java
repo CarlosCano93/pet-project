@@ -37,7 +37,7 @@ public class LoginServiceShould {
     @Test
     void call_login_and_throw_exception_if_doest_find_user() {
         assertThrows(NoSuchElementException.class,
-                () -> loginService.login(UserDto.builder().build()));
+                () -> loginService.login(USER_DTO));
     }
 
     @Test
