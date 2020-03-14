@@ -2,10 +2,9 @@ package com.ckno.petproject;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.domain.entity.User;
-import com.ckno.petproject.infrastructure.UserRepository;
+import com.ckno.petproject.adapters.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

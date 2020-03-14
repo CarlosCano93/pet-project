@@ -1,4 +1,4 @@
-package com.ckno.petproject.infrastructure;
+package com.ckno.petproject.adapters;
 
 import com.ckno.petproject.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
