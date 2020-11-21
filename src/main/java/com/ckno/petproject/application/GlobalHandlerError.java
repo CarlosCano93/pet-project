@@ -10,7 +10,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.persistence.EntityNotFoundException;
 import java.util.NoSuchElementException;
 
-@Slf4j
 @ControllerAdvice
 public class GlobalHandlerError extends ResponseEntityExceptionHandler {
 
