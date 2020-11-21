@@ -1,10 +1,10 @@
 package com.ckno.petproject;
 
 import com.ckno.petproject.application.dto.UserDto;
-import com.ckno.petproject.domain.entity.User;
+import com.ckno.petproject.adapters.entity.UserEntity;
 import com.ckno.petproject.adapters.UserRepository;
+import com.ckno.petproject.domain.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,33 +23,20 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 class AcceptancePetProjectApplication {
-    private static final String NAME_CARLOS = "Carlos";
-    private static final String PSW_CARLOS_01 = "carlos01";
-    private static final String NAME_CANO = "Cano";
-    private static final String PSW_CANO_01 = "cano01";
-    private static final String NAME_PEPE = "Pepe";
-    private static final String PSW_PEPE_01 = "pepe01";
+    private static final String NAME = "ccano";
+    private static final String PASSWORD = "ccano01";
 
-    private static final User EXISITNG_USER = User.builder()
-            .name(NAME_CARLOS)
-            .password(PSW_CARLOS_01)
+    private static final UserEntity USER_ENTITY = UserEntity.builder()
+            .name(NAME)
+            .password(PASSWORD)
             .build();
-    private static final UserDto EXISTING_USER_DTO = UserDto.builder()
-            .name(NAME_CARLOS)
-            .password(PSW_CARLOS_01)
+    private static final UserDto USER_DTO = UserDto.builder()
+            .name(NAME)
+            .password(PASSWORD)
             .build();
 
-    private static final UserDto NOT_REGISTERED_USER_DTO = UserDto.builder()
-            .name(NAME_CANO)
-            .password(PSW_CANO_01)
-            .build();
 
-    private static final UserDto SIGN_UP_USER_DTO = UserDto.builder()
-            .name(NAME_PEPE)
-            .password(PSW_PEPE_01)
-            .build();
-
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     private MockMvc mockMvc;
@@ -59,11 +46,6 @@ class AcceptancePetProjectApplication {
 
     @Test
     void context_load() {
-    }
-
-    @BeforeEach
-    void setUp() {
-        userRepository.save(EXISITNG_USER);
     }
 
     @Test
@@ -78,7 +60,7 @@ class AcceptancePetProjectApplication {
 
     @Test
     void login_return_not_found_if_is_not_in_db() throws Exception {
-        String userJson = objectMapper.writeValueAsString(NOT_REGISTERED_USER_DTO);
+        String userJson = objectMapper.writeValueAsString(User.builder().build());
 
         this.mockMvc.perform(
                 post("/v1/login/")
@@ -88,8 +70,18 @@ class AcceptancePetProjectApplication {
     }
 
     @Test
+    void login_return_bad_request_if_the_request_body_is_wrong() throws Exception {
+        this.mockMvc.perform(
+                post("/v1/login/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("someBody"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test
     void login_return_user() throws Exception {
-        String userJson = objectMapper.writeValueAsString(EXISTING_USER_DTO);
+        userRepository.save(USER_ENTITY);
+        String userJson = objectMapper.writeValueAsString(USER_DTO);
 
         this.mockMvc.perform(
                 post("/v1/login/")
@@ -101,7 +93,7 @@ class AcceptancePetProjectApplication {
 
     @Test
     void sign_up_save_user_and_return_it() throws Exception {
-        String userJson = objectMapper.writeValueAsString(SIGN_UP_USER_DTO);
+        String userJson = objectMapper.writeValueAsString(USER_DTO);
 
         this.mockMvc.perform(
                 post("/v1/signup/")

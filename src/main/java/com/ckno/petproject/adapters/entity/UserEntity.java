@@ -1,5 +1,6 @@
-package com.ckno.petproject.domain.entity;
+package com.ckno.petproject.adapters.entity;
 
+import com.ckno.petproject.domain.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +23,11 @@ public class User {
 
     private String name;
     private String password;
+
+    public static UserEntity from(User user) {
+        return UserEntity.builder()
+                .name(user.getName())
+                .password(user.getPassword())
+                .build();
+    }
 }

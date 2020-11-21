@@ -1,27 +1,21 @@
 package com.ckno.petproject.application;
 
+import com.ckno.petproject.adapters.entity.UserEntity;
 import com.ckno.petproject.application.dto.UserDto;
-import com.ckno.petproject.domain.LoginService;
-import com.ckno.petproject.domain.SignUpService;
-import com.ckno.petproject.domain.entity.User;
+import com.ckno.petproject.domain.AuthService;
 import io.sentry.Sentry;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.NoSuchElementException;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/v1")
 public class Controller {
-    private LoginService loginService;
-    private SignUpService signUpService;
+    private final AuthService authService;
 
-    public Controller(LoginService loginService,
-                      SignUpService signUpService) {
-        this.loginService = loginService;
-        this.signUpService = signUpService;
+    public Controller(final AuthService authService) {
+        this.authService = authService;
     }
 
     @GetMapping("/")
@@ -31,21 +25,14 @@ public class Controller {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody UserDto userDto) {
-        try {
-            Sentry.capture("Controller.login: " + userDto.toString());
-            return ResponseEntity.ok(loginService.login(userDto));
-        } catch (NoSuchElementException ex) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,
-                    "User " + userDto.getName() + " not found in DB",
-                    ex);
-        }
+    public ResponseEntity<UserEntity> login(@Valid @RequestBody UserDto userDto) {
+        Sentry.capture("Controller.login: " + userDto.toString());
+        return ResponseEntity.ok(authService.login(userDto.toUser()));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signUp(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserEntity> signUp(@Valid @RequestBody UserDto userDto) {
         Sentry.capture("Controller.signUp: " + userDto.toString());
-        return ResponseEntity.ok(signUpService.signUp(userDto));
+        return ResponseEntity.ok(authService.signUp(userDto.toUser()));
     }
 }

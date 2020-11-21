@@ -1,6 +1,6 @@
 package com.ckno.petproject.application.dto;
 
-import com.ckno.petproject.domain.entity.User;
+import com.ckno.petproject.domain.model.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
