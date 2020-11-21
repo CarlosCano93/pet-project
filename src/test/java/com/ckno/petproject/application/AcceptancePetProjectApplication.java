@@ -1,4 +1,4 @@
-package com.ckno.petproject;
+package com.ckno.petproject.application;
 
 import com.ckno.petproject.application.dto.UserDto;
 import com.ckno.petproject.adapters.entity.UserEntity;
