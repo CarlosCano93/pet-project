@@ -13,17 +13,11 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequestMapping("/v1")
-public class Controller {
+public class UserController {
     private final AuthService authService;
 
-    public Controller(final AuthService authService) {
+    public UserController(final AuthService authService) {
         this.authService = authService;
-    }
-
-    @GetMapping("/")
-    public String sayHey() {
-        log.info("Hello Pet");
-        return "Hello Pet";
     }
 
     @PostMapping("/login")
