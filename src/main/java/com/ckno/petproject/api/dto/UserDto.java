@@ -1,4 +1,4 @@
-package com.ckno.petproject.application.dto;
+package com.ckno.petproject.api.dto;
 
 import com.ckno.petproject.domain.model.User;
 import lombok.Builder;

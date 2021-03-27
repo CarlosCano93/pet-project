@@ -1,4 +1,4 @@
-package com.ckno.petproject.adapters.entity;
+package com.ckno.petproject.adapters.users.entity;
 
 import com.ckno.petproject.domain.model.User;
 import lombok.AllArgsConstructor;

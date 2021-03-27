@@ -1,9 +1,8 @@
-package com.ckno.petproject.application;
+package com.ckno.petproject.api;
 
-import com.ckno.petproject.adapters.entity.UserEntity;
-import com.ckno.petproject.application.dto.UserDto;
+import com.ckno.petproject.adapters.users.entity.UserEntity;
+import com.ckno.petproject.api.dto.UserDto;
 import com.ckno.petproject.domain.AuthService;
-import io.sentry.Sentry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

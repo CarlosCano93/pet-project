@@ -1,8 +1,8 @@
 package com.ckno.petproject.application;
 
-import com.ckno.petproject.application.dto.UserDto;
-import com.ckno.petproject.adapters.entity.UserEntity;
-import com.ckno.petproject.adapters.UserRepository;
+import com.ckno.petproject.api.dto.UserDto;
+import com.ckno.petproject.adapters.users.entity.UserEntity;
+import com.ckno.petproject.adapters.users.UserRepository;
 import com.ckno.petproject.domain.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

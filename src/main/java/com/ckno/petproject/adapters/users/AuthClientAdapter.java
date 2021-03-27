@@ -1,6 +1,6 @@
-package com.ckno.petproject.adapters;
+package com.ckno.petproject.adapters.users;
 
-import com.ckno.petproject.adapters.entity.UserEntity;
+import com.ckno.petproject.adapters.users.entity.UserEntity;
 import com.ckno.petproject.domain.model.User;
 import com.ckno.petproject.domain.port.AuthClientPort;
 import io.sentry.Sentry;

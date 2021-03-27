@@ -1,6 +1,6 @@
 package com.ckno.petproject.domain;
 
-import com.ckno.petproject.adapters.entity.UserEntity;
+import com.ckno.petproject.adapters.users.entity.UserEntity;
 import com.ckno.petproject.domain.model.User;
 import com.ckno.petproject.domain.port.AuthClientPort;
 import org.junit.jupiter.api.Test;
