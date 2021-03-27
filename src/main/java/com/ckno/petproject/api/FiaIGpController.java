@@ -19,7 +19,6 @@ public class FiaIGpController {
         this.iGpRepository = iGpRepository;
     }
 
-    @CrossOrigin(origins = "https://campeonato-fia-igp.herokuapp.com/")
     @GetMapping("pro-drivers")
     public List<ProDriver> getProDrivers() {
         return iGpRepository.findAll();
