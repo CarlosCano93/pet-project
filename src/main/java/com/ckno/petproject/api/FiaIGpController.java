@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/igp")
 public class FiaIGpController {
 
     private final IGpRepository iGpRepository;
@@ -18,7 +18,7 @@ public class FiaIGpController {
         this.iGpRepository = iGpRepository;
     }
 
-    @GetMapping
+    @GetMapping("pro-drivers")
     public List<ProDriver> getProDrivers() {
         return iGpRepository.findAll();
     }
