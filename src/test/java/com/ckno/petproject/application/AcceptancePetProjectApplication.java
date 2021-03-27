@@ -49,16 +49,6 @@ class AcceptancePetProjectApplication {
     }
 
     @Test
-    void say_hello_pet() throws Exception {
-        this.mockMvc.perform(get("/v1/"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString()
-                .equals("Hello Pet");
-    }
-
-    @Test
     void login_return_not_found_if_is_not_in_db() throws Exception {
         String userJson = objectMapper.writeValueAsString(User.builder().build());
 
