@@ -13,13 +13,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Value("${com.ckno.igp-front-url}") private String campeonatoFiaUrl;
+    @Value("${com.ckno.igp-front-url}")
+    private String campeonatoFiaUrl;
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        Sentry.capture("campeonatoFiaUrl: " + campeonatoFiaUrl);
         registry.addMapping("/v1/igp/**")
-                .allowedOrigins("https://campeonato-fia-igp.herokuapp.com")
+                .allowedOrigins(campeonatoFiaUrl)
                 .allowedMethods("GET");
     }
 }
