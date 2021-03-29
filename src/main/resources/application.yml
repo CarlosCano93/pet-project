@@ -18,5 +18,6 @@ spring:
     mongodb:
       uri: ${MONGODB_IGP_URI}
 
-heroku:
-  igp-front-url: ${IGP_FRONT_URL:http//localhost:8080}
+com:
+  ckno:
+    igp-front-url: ${IGP_FRONT_URL:localhost:8080}
