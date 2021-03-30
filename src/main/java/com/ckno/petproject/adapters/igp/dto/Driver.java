@@ -1,6 +1,5 @@
 package com.ckno.petproject.adapters.igp.dto;
 
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,10 +8,17 @@ import java.util.List;
 
 @Document("pro_drivers")
 @Data
-public class ProDriver {
+public class Driver implements Comparable<Driver> {
     private @Id String id;
     private String driver;
     private String team;
+    private String category;
     private int points;
     private List<Event> events;
+
+    @Override
+    public int compareTo(Driver o) {
+        return this.getPoints() - o.getPoints();
+    }
+
 }

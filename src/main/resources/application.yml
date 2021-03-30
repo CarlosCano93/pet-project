@@ -16,7 +16,7 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGODB_IGP_URI}
+      uri: ${MONGODB_IGP_URI:mongodb://localhost:27017/seasson_10?retryWrites=true&w=majority}
 
 com:
   ckno:
