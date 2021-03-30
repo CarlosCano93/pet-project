@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${CLEARDB_DATABASE_URL}
+    url: ${CLEARDB_DATABASE_URL:jdbc:mysql://localhost:3306/test?serverTimezone=UTC}
     username: root
     password:
 
@@ -20,4 +20,4 @@ spring:
 
 com:
   ckno:
-    igp-front-url: ${IGP_FRONT_URL:localhost:8080}
+    igp-front-url: ${IGP_FRONT_URL:http://localhost:3000}

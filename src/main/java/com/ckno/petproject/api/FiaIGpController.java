@@ -2,7 +2,7 @@ package com.ckno.petproject.api;
 
 import com.ckno.petproject.adapters.igp.IGpRepository;
 import com.ckno.petproject.adapters.igp.dto.ProDriver;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +21,6 @@ public class FiaIGpController {
 
     @GetMapping("pro-drivers")
     public List<ProDriver> getProDrivers() {
-        return iGpRepository.findAll();
+        return iGpRepository.findAll(Sort.by(Sort.Direction.DESC, "points"));
     }
 }
