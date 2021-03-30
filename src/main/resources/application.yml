@@ -20,4 +20,4 @@ spring:
 
 com:
   ckno:
-    igp-front-url: ${IGP_FRONT_URL:http://localhost:3000}
+    igp-front-url: ${IGP_FRONT_URL:*}
