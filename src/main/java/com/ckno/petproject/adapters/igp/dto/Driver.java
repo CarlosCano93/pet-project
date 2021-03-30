@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
 import java.util.List;
 
-@Document("pro_drivers")
+@Document("drivers")
 @Data
 public class Driver implements Comparable<Driver> {
     private @Id String id;

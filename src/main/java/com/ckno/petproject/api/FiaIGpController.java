@@ -21,12 +21,6 @@ public class FiaIGpController {
         this.iGpRepository = iGpRepository;
     }
 
-    @GetMapping("pro-drivers")
-    @Deprecated
-    public List<Driver> getProDrivers() {
-        return iGpRepository.findAll(Sort.by(Sort.Direction.DESC, "points"));
-    }
-
     @GetMapping("drivers")
     public List<Driver> getDrivers() {
         return iGpRepository.findAll(Sort.by(Sort.Direction.DESC, "points"));
