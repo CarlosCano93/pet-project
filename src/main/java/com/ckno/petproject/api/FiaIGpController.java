@@ -34,8 +34,8 @@ public class FiaIGpController {
         outer:
         for (Driver driver : drivers) {
             for (Driver manager : managers) {
+                manager.setDriver(null);
                 if (driver.getTeam().equals(manager.getTeam())) {
-                    manager.setDriver(null);
                     manager.getEvents().addAll(driver.getEvents());
                     manager.setPoints(manager.getPoints() + driver.getPoints());
                     continue outer;

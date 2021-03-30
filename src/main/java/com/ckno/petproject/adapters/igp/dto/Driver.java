@@ -18,7 +18,7 @@ public class Driver implements Comparable<Driver> {
 
     @Override
     public int compareTo(Driver o) {
-        return this.getPoints() - o.getPoints();
+        return o.getPoints() - this.getPoints();
     }
 
 }
