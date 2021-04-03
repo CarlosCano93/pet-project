@@ -13,6 +13,7 @@ public class Driver implements Comparable<Driver> {
     private String driver;
     private String team;
     private String superTeam;
+    private String manager;
     private String category;
     private int points;
     private List<Event> events;
