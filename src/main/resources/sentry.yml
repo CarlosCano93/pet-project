@@ -1,2 +1,0 @@
-dns: ${SENTRY_DNS}
-stacktrace.app.packages: com.ckno.petproject
