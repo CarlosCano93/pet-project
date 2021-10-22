@@ -23,7 +23,6 @@ class PokemonController {
     @GetMapping("{name}")
     public PokemonResponse getPokemon(@PathVariable String name) {
         Pokemon pokemon = pokemonService.getPokemonBy(name);
-
         return new PokemonResponse(pokemon.name(), pokemon.type());
     }
 
