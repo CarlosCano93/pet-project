@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("v1/pokemon")
 @RequiredArgsConstructor
-public
 class PokemonController {
 
     private final PokemonService pokemonService;
