@@ -29,15 +29,13 @@ public class PokeApiClient {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private record PokemonDto(Species species, List<Type> types) {
+    private record PokemonDto(String name, List<Type> types) {
 
         public PokemonService.Pokemon toPokemon() {
-            return new PokemonService.Pokemon(species.name(), types.get(0).type().name());
+            return new PokemonService.Pokemon(name, types.get(0).type().name());
         }
 
         private record Type(int slot, TypeName type) {}
-
-        private record Species(String name) {}
 
         private record TypeName(String name) {}
     }
