@@ -15,12 +15,7 @@ class PokemonController {
 
     private final PokemonService pokemonService;
 
-    @GetMapping("hello/{name}")
-    public String hello(@PathVariable String name) {
-        return String.format("Hello %s!", name);
-    }
-
-    @GetMapping("exists/{name}")
+    @GetMapping("{name}/exists")
     public void pokemonExists(@PathVariable String name) {
         pokemonService.getPokemonBy(name);
     }
