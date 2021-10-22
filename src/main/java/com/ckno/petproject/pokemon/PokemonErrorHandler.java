@@ -1,4 +1,4 @@
-package com.ckno.petproject;
+package com.ckno.petproject.pokemon;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

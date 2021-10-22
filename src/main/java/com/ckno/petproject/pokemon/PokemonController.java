@@ -1,7 +1,7 @@
-package com.ckno.petproject;
+package com.ckno.petproject.pokemon;
 
+import com.ckno.petproject.pokemon.PokemonService.Pokemon;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +22,14 @@ class PokemonController {
 
     @GetMapping("exists/{name}")
     public void pokemonExists(@PathVariable String name) {
-        pokemonService.pokemonExists(name);
+        pokemonService.getPokemonBy(name);
     }
 
     @GetMapping("{name}")
     public PokemonResponse getPokemon(@PathVariable String name) {
-        String pokemonType = pokemonService.getPokemonType(name);
+        Pokemon pokemon = pokemonService.getPokemonBy(name);
 
-        return new PokemonResponse(name, pokemonType);
+        return new PokemonResponse(pokemon.name(), pokemon.type());
     }
 
     private record PokemonResponse(String name, String type) {}
