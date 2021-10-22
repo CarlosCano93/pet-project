@@ -1,0 +1,12 @@
+com:
+  ckno:
+    external:
+      pokeapi:
+        url: ${POKEAPI_URL}
+
+sentry:
+  environment: ${ENV}
+  dsn: ${SENTRY_DSN}
+  stacktrace:
+    app:
+      packages: com.ckno.petproject

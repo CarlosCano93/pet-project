@@ -21,7 +21,7 @@ public class PokeApiClient {
     }
 
     @FeignClient(name = "pokeapi",
-                 url = "https://pokeapi.co/api/v2",
+                 url = "${com.ckno.external.pokeapi.url}",
                  decode404 = true)
     interface PokeApiFeignClient {
         @GetMapping("/pokemon/{name}")

@@ -1,0 +1,12 @@
+com:
+  ckno:
+    external:
+      pokeapi:
+        url: ${POKEAPI_URL:localhost:9090/pokeapi}
+
+sentry:
+  environment: ${ENV:local}
+  dsn:
+  stacktrace:
+    app:
+      packages: com.ckno.petproject
