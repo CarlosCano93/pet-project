@@ -20,15 +20,8 @@ class PetProjectApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    void say_hello() throws Exception {
-        mockMvc.perform(get("/v1/pokemon/hello/{name}", "ditto"))
-               .andExpect(status().is2xxSuccessful())
-               .andExpect(content().string("Hello ditto!"));
-    }
-
-    @Test
     void return_200_if_pokemon_exists() throws Exception {
-        mockMvc.perform(get("/v1/pokemon/exists/{name}", "charmander"))
+        mockMvc.perform(get("/v1/pokemon/{name}/exists", "charmander"))
                .andExpect(status().is2xxSuccessful());
     }
 
