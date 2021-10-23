@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class PokeApiClient {
+class PokeApiClientImpl implements PokeApiClient {
     private final PokeApiFeignClient pokeApiFeignClient;
 
     public Optional<PokemonService.Pokemon> findPokemonBy(String name) {
@@ -23,7 +23,7 @@ public class PokeApiClient {
     @FeignClient(name = "pokeapi",
                  url = "${com.ckno.external.pokeapi.url}",
                  decode404 = true)
-    interface PokeApiFeignClient {
+    private interface PokeApiFeignClient {
         @GetMapping("/pokemon/{name}")
         Optional<PokemonDto> findPokemonByName(@PathVariable String name);
     }
@@ -31,7 +31,7 @@ public class PokeApiClient {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private record PokemonDto(String name, List<Type> types) {
 
-        public PokemonService.Pokemon toPokemon() {
+        private PokemonService.Pokemon toPokemon() {
             return new PokemonService.Pokemon(name, types.get(0).type().name());
         }
 
@@ -39,4 +39,8 @@ public class PokeApiClient {
 
         private record TypeName(String name) {}
     }
+}
+
+public interface PokeApiClient {
+    Optional<PokemonService.Pokemon> findPokemonBy(String name);
 }
