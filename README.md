@@ -53,3 +53,15 @@ Look at this:
     }
 
 We have five POJOS in six lines. We can also add the builder or mapper and still be readable! 
+
+## URL Shortener
+Two endpoints. One to save the url and get the identifier hash. Other to redirect with the hash.
+
+Working on it...
+
+TODO: 
+
+- Improve the hash generator
+- Error catching 
+- Persistence in DB
+- Cache
