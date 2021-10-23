@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class PokemonService {
+class PokemonServiceImpl implements PokemonService {
 
     private final PokeApiClient pokeApiClient;
 
@@ -16,6 +16,11 @@ public class PokemonService {
                         String.format("Pokemon %s not found", pokemonName)));
     }
 
+}
+
+public interface PokemonService {
+    Pokemon getPokemonBy(String pokemonName);
+
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public record Pokemon(String name, String type) {}
+    record Pokemon(String name, String type) {}
 }
