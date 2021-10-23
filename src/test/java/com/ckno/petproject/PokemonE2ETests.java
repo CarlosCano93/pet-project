@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {WireMockConfiguration.class})
-class PetProjectApplicationTests {
+class PokemonE2ETests {
 
     @Autowired
     private MockMvc mockMvc;
