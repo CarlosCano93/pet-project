@@ -1,6 +1,7 @@
-package com.ckno.petproject.pokemon;
+package com.ckno.petproject.pokemon.api;
 
-import com.ckno.petproject.pokemon.PokemonService.Pokemon;
+import com.ckno.petproject.pokemon.domain.PokemonService;
+import com.ckno.petproject.pokemon.domain.PokemonService.Pokemon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

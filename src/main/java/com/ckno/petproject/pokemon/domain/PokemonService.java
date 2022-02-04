@@ -1,5 +1,6 @@
-package com.ckno.petproject.pokemon;
+package com.ckno.petproject.pokemon.domain;
 
+import com.ckno.petproject.pokemon.adapter.PokeApiClient;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ class PokemonServiceImpl implements PokemonService {
 }
 
 public interface PokemonService {
-    Pokemon getPokemonBy(String pokemonName);
+    Pokemon getPokemonBy(String name);
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     record Pokemon(String name, String type) {}

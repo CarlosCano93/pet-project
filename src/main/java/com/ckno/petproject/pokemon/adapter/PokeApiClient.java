@@ -1,5 +1,6 @@
-package com.ckno.petproject.pokemon;
+package com.ckno.petproject.pokemon.adapter;
 
+import com.ckno.petproject.pokemon.domain.PokemonService;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -19,26 +20,26 @@ class PokeApiClientImpl implements PokeApiClient {
         return pokeApiFeignClient.findPokemonByName(name)
                 .map(PokemonDto::toPokemon);
     }
+}
 
-    @FeignClient(name = "pokeapi",
-                 url = "${com.ckno.external.pokeapi.url}",
-                 decode404 = true)
-    private interface PokeApiFeignClient {
-        @GetMapping("/pokemon/{name}")
-        Optional<PokemonDto> findPokemonByName(@PathVariable String name);
+@FeignClient(name = "pokeapi",
+             url = "${com.ckno.external.pokeapi.url}",
+             decode404 = true)
+interface PokeApiFeignClient {
+    @GetMapping("/pokemon/{name}")
+    Optional<PokemonDto> findPokemonByName(@PathVariable String name);
+}
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+record PokemonDto(String name, List<Type> types) {
+
+    PokemonService.Pokemon toPokemon() {
+        return new PokemonService.Pokemon(name, types.get(0).type().name());
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    private record PokemonDto(String name, List<Type> types) {
+    private record Type(int slot, TypeName type) {}
 
-        private PokemonService.Pokemon toPokemon() {
-            return new PokemonService.Pokemon(name, types.get(0).type().name());
-        }
-
-        private record Type(int slot, TypeName type) {}
-
-        private record TypeName(String name) {}
-    }
+    private record TypeName(String name) {}
 }
 
 public interface PokeApiClient {

@@ -1,4 +1,4 @@
-package com.ckno.petproject.pokemon;
+package com.ckno.petproject.pokemon.domain;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
