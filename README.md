@@ -20,24 +20,26 @@ We have just four files with less than 50 lines per file.
 That's why **I put several classes in the same file**.
 Because they are too small, and we are speaking about **the same context**.
 
-- Controller: The entry point and the Response record. The record is private, only used here.
+- Controller: The entry point (API) and the Response record. The record is private, only used here.
 - Service: The interface, the implementation, and the domain record. The implementation is private and the interface and record are public.
 - Client: The interface, the implementation, the feign, and the pokeapi DTO record. Everything is private but the interface.
 - ErrorHandler: controller advice, the exceptions, and the record error to inform.
 
 ### Isolated?
-The original idea was to isolate by layers as it happens in onion architecture.
-But it doesn't happen here because the classes are package-private and they are in the same package.
-I guess I can create them, but I don't like the idea to have one package for one class.
+The original idea was to isolate by layers as it happens in onion architecture with a simpler structure.
 
-The models are isolated, dto from the client is only accessible from the client and the response from the controller.
+- The implementation classes are private, so we have to use the interfaces. (is this necessary?)
+- The models are isolated, dto from the client is only accessible from the client and the response from the controller.
+
 Probably we can say that this objective is achieved.
 
 ### Conclusions
-I would never do something like that in a production project.
 Maybe this has some sense here because is a very small and specific idea. But in a real project, I don't think so.
 
-But, there are a couple of ideas that I liked. Now, I'm less refused to use inner classes.
+But, there are a couple of ideas that I liked. 
+
+#### Inner Classes
+Now, I'm less refused to use inner classes.
 For example, putting the Feign configuration inside feign client.
 Usually, we just configure the object mapper or decoder, and the feign clients aren't too big either.
 
@@ -53,6 +55,18 @@ Look at this:
     }
 
 We have five POJOS in six lines. We can also add the builder or mapper and still be readable! 
+
+#### Exceptions scope
+The ErrorHandler is in the domain package. I don't like this.
+I was able to do it because I'm only checking domain exception. 
+But if I want to check an adapter custom exception I would have to move it.
+Then change the scope of the exception to public. 
+
+##### Interface
+Why am I using interfaces?
+
+I guess I'm used to doing it, but I don't find it very useful here. 
+The contract is the same with the implementation if we use the public and private methods.
 
 ## URL Shortener
 Two endpoints. One to save the url and get the identifier hash. Other to redirect with the hash.
