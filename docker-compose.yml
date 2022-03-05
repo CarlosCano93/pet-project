@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  #service 1: definition of mongo database
+  mongo:
+    image: mongo
+    volumes:
+      - $HOME/data:/data/db
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+
+  #service 2: definition of your spring-boot app
+  app:                          #it is just a name, which will be used only in this file.
+    image: hello-service                 #name of the image after dockerfile executes
+    container_name: hello-service-app    #name of the container created from docker image
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/checkout-local
+    ports:
+      - "8080:8080"                       #docker containter port with your os port
+    links:
+      - mongo
+    depends_on:                           #define dependencies of this app
+      - mongo                                #dependency name (which is defined with this name 'db' in this file earlier)
