@@ -2,11 +2,11 @@ com:
   ckno:
     external:
       pokeapi:
-        url: ${POKEAPI_URL}
+        url: ${POKEAPI_URL:localhost}
 
 sentry:
-  environment: ${ENV}
-  dsn: ${SENTRY_DSN}
+  environment: ${ENV:local}
+  dsn: ${SENTRY_DSN:https://7e7aad618ed246d3a972ae2593c3834a@o325857.ingest.sentry.io/1832401}
   stacktrace:
     app:
       packages: com.ckno.petproject
