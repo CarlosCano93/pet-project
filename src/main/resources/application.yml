@@ -10,3 +10,10 @@ sentry:
   stacktrace:
     app:
       packages: com.ckno.petproject
+
+spring:
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: pet-project
